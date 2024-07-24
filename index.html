@@ -268,17 +268,19 @@
 
     $(document).on('click', '#confirmSurveyAnswer', function() {
         const option = $('input[name="surveyOption"]:checked').val();
+        if (!option) {
+            toastr.warning('Por favor, selecione uma das opções.');
+            return;
+        }
         
         //todo: save on db
 
-        toastr.success('Obrigado pela sua colaboração!');
+        toastr.success('Agradecemos a sua colaboração!');
         $('.btn').prop('disabled', true);
-        
-        /*
+    
         setTimeout(() => { 
             $(location).prop('href', 'http://www.vetbizz.pt/');
         }, 500);
-        */
     });
 
     $(document).on('click', '#confirmCampaign', function() {
